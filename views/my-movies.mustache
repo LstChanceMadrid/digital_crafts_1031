@@ -15,54 +15,63 @@
 
     <body>
         <header>
-        <h1>My Movies</h1>
+            <h1>My Movies</h1>
         </header>
 
         <main>
             <form action="/add-movie" method="POST">
-            <fieldset>
-            <legend>Add Movie</legend>
-                <label class="add-movie-label">Movie Title:</label>
-                <input type="text" name="movieTitle" placeholder="Enter Movie Title" /><br />
-                <label class="add-movie-label">Genre:</label>
-                <input type="text" name="movieGenre" placeholder="Enter Genre" /><br />
-                <label class="add-movie-label">Description:</label>
-                <input type="text" name="movieDescription" placeholder="Enter Description" /><br />
-                <label class="add-movie-label">Poster:</label>
-                <input type="text" name="moviePoster" placeholder="Enter Poster Url" /><br />
-                <input type="submit" value="Add Movie" />
-            </fieldset>
+                <fieldset>
+                    <legend>Add Movie</legend>
+
+                    <label class="add-movie-label">Movie Title:</label>
+                    <input type="text" name="movieTitle" placeholder="Enter Movie Title" /><br />
+
+                    <label class="add-movie-label">Genre:</label>
+                    <input type="text" name="movieGenre" placeholder="Enter Genre" /><br />
+
+                    <label class="add-movie-label">Description:</label>
+                    <input type="text" name="movieDescription" placeholder="Enter Description" /><br />
+
+                    <label class="add-movie-label">Poster:</label>
+                    <input type="text" name="moviePoster" placeholder="Enter Poster Url" /><br />
+
+                    <input type="submit" value="Add Movie" />
+                </fieldset>
             </form>
 
             <form action="/filter" method="POST">
                 <input type="text" name="movieGenre" placeholder="Choose Genre" />
+
                 <input type="submit" value="Filter" />
             </form>
 
-            
-            <ul>
-                {{#myMoviesList}}
-                <form action="/remove-movie" method="POST">
-                <input type="hidden" name="removeMovieTitle" value="{{title}}" />
-                
-                    <li>
-                        <div class="movie-item-container">
-                            <div class="movie-poster-container">
-                                <img class="movie-poster" src="{{poster}}" />
-                            </div>
-                            <div class="movie-info">
-                                Title: {{title}}
-                                Genre: {{genre}}
-            <a href="/movies/{{title}}/description">Description</a>
-                                {{description}}
-                            </div>
-                        </div>
-                    </li>
-                    <input type="submit" value="Remove Movie" />
-                </form>
-                {{/myMoviesList}}
-            </ul>
+            <fieldset>
+                <legend>My Movie List</legend>
 
+                <ul>
+                    {{#myMoviesList}}
+                    <form action="/remove-movie" method="POST">
+                        <input type="hidden" name="removeMovieTitle" value="{{title}}" />
+                
+                        <li>
+                            <div class="movie-item-container">
+                                <div class="movie-poster-container">
+                                    <img class="movie-poster" src="{{poster}}" />
+                                </div>
+
+                                <div class="movie-info">
+                                    Title: {{title}}
+                                    Genre: {{genre}}
+                                    <a href="/movies/{{title}}/description">Description</a>
+                                    {{description}}
+                                </div>
+                            </div>
+                        </li>
+                        <input type="submit" value="Remove Movie" />
+                    </form>
+                    {{/myMoviesList}}
+                </ul>
+            </fieldset>
         </main>
 
         <footer>

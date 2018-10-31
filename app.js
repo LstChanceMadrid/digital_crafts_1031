@@ -8,7 +8,7 @@ const mustacheExpress = require('mustache-express');
 
 let myMoviesList = [];
 
-let movieInfo
+let movieInfo;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,18 +23,13 @@ app.use('/css', express.static('css'));
 // index page
 app.get('/', (req, res) => {
 
-
     res.render('index');
 });
-
-
-
 
 app.get('/my-movies', (req, res) => {    
 
     res.render('my-movies', {myMoviesList : myMoviesList});
 });
-
 
 // add movie
 app.post('/add-movie', (req, res) => {
@@ -59,32 +54,26 @@ app.post('/add-movie', (req, res) => {
 
 app.get('/movies/:title/description', (req, res) => {
 
-
     myMovie = myMoviesList.filter(movie => {
-        return movie.title == req.params.title
-    })[0]
+        return movie.title == req.params.title;
+    })[0];
 
-    console.log(myMovie)
-    description = myMovie.description
-    console.log(description)
-    res.render('movie-description', {description: description})
-})
+    description = myMovie.description;
 
+    res.render('movie-description', {description: description});
+});
 
 app.post('/movie-description', (req, res) => {
     
-    let movieDescription = req.body.movieDescription
-    console.log(movieDescription)
+    let movieDescription = req.body.movieDescription;
 
     myMoviesList = myMoviesList.filter(movie => {
-        return movie.description === description
-    })
+        return movie.description === description;
+    });
 
 
-    res.redirect('/movie-description')
-})
-
-
+    res.redirect('/movie-description');
+});
 
 // remove movie
 app.post('/remove-movie', (req, res) => {
@@ -102,31 +91,11 @@ app.post('/filter', (req, res) => {
 
 
     myMoviesList = myMoviesList.filter(movie => {
-        return movie.genre === genre
-    }) 
+        return movie.genre === genre;
+    });
 
-
-    res.redirect('/my-movies')
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    res.redirect('/my-movies');
+});
 
 
 // starts server
