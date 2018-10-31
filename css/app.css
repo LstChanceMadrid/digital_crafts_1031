@@ -1,0 +1,28 @@
+body {
+    background: gray;
+    color: white;
+}
+
+.add-movie-label {
+    width: 5em;
+    color: yellow;
+}
+
+.movie-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+
+}
+.movie-poster-container {
+    width: 50%;
+}
+.movie-poster {
+    width: 100%;
+}
+
+.movie-info {
+    width: 40%;
+    
+}
